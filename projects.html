@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            background-color: #111111; /* Dark background */
+            margin: 0;
+            padding: 0;
+            font-family: 'Satoshi', sans-serif; /* Satoshi Regular font */
+        }
+
+        nav {
+            background-color: #111111; /* Same color as the background for invisibility */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5vw 5vw; /* Padding as percentage of viewport width */
+        }
+
+        .background-image {
+            position: absolute; /* Fixed background */
+            top: 0vw;
+            left: 0vw;
+            width: 100%;
+            height: 100%; /* Full screen height */
+            background-image: url('assets/images/bg3.png'); /* Local image */
+            background-size: cover; /* Cover the whole area */
+            background-position: center center; /* Center the image */
+            z-index: -1; /* Ensure the background stays behind other content */
+        }
+
+        .logo img {
+            width: 17.8vw; /* Adjust the size of the logo image */
+        }
+
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-left: 2vw; /* Space between menu items */
+        }
+
+        .menu a {
+            color: #f0f0f0; /* Light text color */
+            text-decoration: none;
+            font-size: 1.5vw; /* Relative font size */
+            font-weight: 100; /* Lighter weight */
+            position: relative; /* For the underline animation */
+        }
+
+        .menu ab {
+            color: rgb(206, 49, 49); /* Light text color */
+            text-decoration: none;
+            font-size: 1.5vw; /* Relative font size */
+            font-weight: 100; /* Lighter weight */
+            position: relative; /* For the underline animation */
+        }
+
+        .menu a::before, .menu ab::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            top: 1.9vw;
+            border-radius: 0px;
+            background-color: #ffffff; /* Dark color for underline */
+            bottom: 0;
+            left: 0;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform .3s ease-in-out;
+        }
+
+        .menu a:hover::before, .menu ab:hover::before {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        .menu a:hover {
+            color: rgb(206, 49, 49); /* Red on hover */
+            transform: scale(1.2); /* Slight scaling on hover */
+        }
+
+        .menu ab:hover {
+            color: rgb(255, 255, 255); /* White on hover */
+            transform: scale(1.2);
+        }
+
+        /* Red border with relative margin */
+        .border-bottom {
+            position: fixed;
+            display: flex;
+            top: 7.4vw;
+            left: 6.8vw;
+            width: 86%; /* Relative width */
+            height: 0.17vh; /* Red border height */
+            background-color: #ff161a86;
+            margin: 0 auto;
+        }
+
+        .about-content img {
+            width: 6vw; /* Adjust logo size */
+            vertical-align: -1.5%; /* Align the logo with text */
+            margin: 0 5px;
+        }
+
+        .text-sectionlast {
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            text-align: center; /* Center align the text */
+            font-size: 1.4vw;
+            color: rgb(117, 117, 117); /* Set text color */
+            line-height: 1.5;
+            letter-spacing: -1.9%;
+            top: 33vw;
+        }
+
+        /* Updated styling for the three windows */
+        .container {
+            width: 100%;
+            margin-top:8vw;
+            display: flex;
+            justify-content: center;
+            height: 300px; /* Reduced height by 40% */
+            gap: 10px;
+        }
+
+        .container > div {
+            flex: 0 0 250px; /* Increased width of each window */
+            border-radius: 0.5rem;
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            box-shadow: 1px 5px 15px #1e0e3e00;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container > div:nth-of-type(1) {
+            background: url("assets/images/p1.png") no-repeat 50% / cover;
+        }
+
+        .container > div:nth-of-type(2) {
+            background: url("assets/images/p2.png") no-repeat 50% / cover;
+        }
+
+        .container > div:nth-of-type(3) {
+            background: url("assets/images/p3.png") no-repeat 50% / cover;
+        }
+
+        .content {
+            font-size: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            opacity: 0;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-end;
+            background: rgb(2, 2, 46);
+            background: linear-gradient(0deg, rgba(2, 2, 46, 0.6755077030812324) 0%, rgba(255, 255, 255, 0) 100%);
+            transform: translatey(100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+            visibility: hidden;
+        }
+
+        .container > div:hover {
+            flex: 0 0 250px;
+            box-shadow: 1px 3px 15px #7645d800;
+            transform: translatey(-30px);
+        }
+
+        .container > div:hover .content {
+            opacity: 1;
+            transform: translatey(0%);
+            visibility: visible;
+        }
+
+        .content span {
+            display: block;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Image -->
+    <div class="background-image"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/aankh.png" alt="Aankh Logo">
+            </a>
+        </div>
+        <ul class="menu">
+            <li><a href="about.html">About Aankh</a></li>
+            <li><ab href="projects.html">Projects</ab></li>
+            <li><a href="services.html">Services Offered</a></li>
+            <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Red Border -->
+    <div class="border-bottom"></div>
+
+    <!-- Three Windows -->
+    <div class="container">
+        <div>
+            <div class="content">
+                <h2>Paws & Pies</h2>
+                <span></span>
+            </div>
+        </div>
+        <div>
+            <div class="content">
+                <h2>Sahaya Sarige</h2>
+                <span></span>
+            </div>
+        </div>
+        <div>
+            <div class="content">
+                <h2>Orbitron</h2>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Text Section -->
+    <div class="text-sectionlast">
+        <p>Additional information or text can go here.</p>
+    </div>
+
+</body>
+</html>
